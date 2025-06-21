@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Mail, MessageSquare, Send, Github, Linkedin, Phone, MapPin, Instagram } from "lucide-react"
+import { toast } from "sonner"
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -14,6 +15,8 @@ export default function Contact() {
     subject: "",
     message: "",
   })
+
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
@@ -40,11 +43,39 @@ export default function Contact() {
     setFormData((prev) => ({ ...prev, [field]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Form submitted:", formData)
-    alert("Message sent! I'll get back to you soon.")
-    setFormData({ name: "", email: "", subject: "", message: "" })
+    setIsSubmitting(true)
+
+    try {
+      console.log("Submitting form data:", formData)
+      
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      console.log("Response status:", response.status)
+      
+      if (response.ok) {
+        const result = await response.json()
+        console.log("Success response:", result)
+        toast.success("Message sent! I'll get back to you soon.")
+        setFormData({ name: "", email: "", subject: "", message: "" })
+      } else {
+        const errorData = await response.json().catch(() => ({}))
+        console.error("Error response:", errorData)
+        toast.error("Failed to send message. Please try again later.")
+      }
+    } catch (error) {
+      console.error("Form submission error:", error)
+      toast.error("An error occurred. Please try again later.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -112,10 +143,11 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="w-full px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-lg hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
+                disabled={isSubmitting}
+                className="w-full px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-lg hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Send size={18} />
-                <span>Send Message</span>
+                <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
               </button>
             </form>
           </div>
@@ -132,11 +164,15 @@ export default function Contact() {
               <div className="space-y-4">
                 <div className="flex items-center space-x-4">
                   <Mail className="text-blue-500" size={20} />
-                  <span className="text-gray-300">mrajul1234@gmail.com</span>
+                  <a href="mailto:mrajul1234@gmail.com" className="text-gray-300 hover:text-blue-400 transition-colors">
+                    mrajul1234@gmail.com
+                  </a>
                 </div>
                 <div className="flex items-center space-x-4">
                   <Phone className="text-blue-500" size={20} />
-                  <span className="text-gray-300">+91 93680 69761</span>
+                  <a href="tel:+919368069761" className="text-gray-300 hover:text-blue-400 transition-colors">
+                    +91 93680 69761
+                  </a>
                 </div>
                 <div className="flex items-center space-x-4">
                   <MapPin className="text-blue-500" size={20} />
