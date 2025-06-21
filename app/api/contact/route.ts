@@ -43,14 +43,14 @@ export async function POST(req: NextRequest) {
     });
 
     if (error) {
-      console.error("Resend error:", error);
+      console.error("Resend API returned an error:", JSON.stringify(error, null, 2));
       return NextResponse.json(
-        { error: "Failed to send email" },
+        { error: "Failed to send email", details: error },
         { status: 500 }
       );
     }
 
-    console.log("Email sent successfully:", data);
+    console.log("Email sent successfully via Resend. Response:", JSON.stringify(data, null, 2));
     return NextResponse.json({ success: true, data });
 
   } catch (error) {
