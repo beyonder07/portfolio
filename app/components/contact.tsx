@@ -50,6 +50,12 @@ export default function Contact() {
     try {
       console.log("Submitting form data:", formData)
       
+      // Check if we're online
+      if (!navigator.onLine) {
+        toast.error("No internet connection. Please check your connection and try again.")
+        return
+      }
+      
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
@@ -72,7 +78,11 @@ export default function Contact() {
       }
     } catch (error) {
       console.error("Form submission error:", error)
-      toast.error("An error occurred. Please try again later.")
+      if (error instanceof TypeError && error.message.includes('fetch')) {
+        toast.error("Network error. Please check your connection and try again.")
+      } else {
+        toast.error("An error occurred. Please try again later.")
+      }
     } finally {
       setIsSubmitting(false)
     }
