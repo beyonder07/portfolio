@@ -53,8 +53,13 @@ export default function Contact() {
       // Check if we're online
       if (!navigator.onLine) {
         toast.error("No internet connection. Please check your connection and try again.")
+        setIsSubmitting(false)
         return
       }
+      
+      // Add timeout to prevent hanging requests
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), 10000) // 10 second timeout
       
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -62,8 +67,10 @@ export default function Contact() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
+        signal: controller.signal,
       })
 
+      clearTimeout(timeoutId)
       console.log("Response status:", response.status)
       
       if (response.ok) {
@@ -80,6 +87,8 @@ export default function Contact() {
       console.error("Form submission error:", error)
       if (error instanceof TypeError && error.message.includes('fetch')) {
         toast.error("Network error. Please check your connection and try again.")
+      } else if (error.name === 'AbortError') {
+        toast.error("Request timed out. Please try again.")
       } else {
         toast.error("An error occurred. Please try again later.")
       }

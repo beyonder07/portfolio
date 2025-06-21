@@ -34,12 +34,8 @@ export default function Portfolio() {
 
   useEffect(() => {
     if (!loading) {
-      // Initialize smooth scroll
-      gsap.fromTo(
-        ".fade-in",
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: "power2.out" },
-      )
+      // GSAP animations are handled within individual components
+      // No global fade-in animation needed
     }
   }, [loading])
 
