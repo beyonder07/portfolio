@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
     console.log("Sending email with data:", { name, email, subject, message });
 
     const { data, error } = await resend.emails.send({
-      from: "Portfolio Contact <noreply@your-verified-domain.com>",
+      from: "Portfolio Contact <contact@beyonder.live>",
       to: ["mrajul1234@gmail.com"],
       reply_to: email,
       subject: `New message from ${name}: ${subject}`,
