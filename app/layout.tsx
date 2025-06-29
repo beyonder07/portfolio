@@ -30,6 +30,10 @@ export default function RootLayout({
         <meta name="keywords" content="Full Stack Developer, React, Node.js, Python, Java, MERN Stack, Web Development" />
         <meta name="author" content="Rajul Mishra" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
