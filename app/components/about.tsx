@@ -76,6 +76,7 @@ export default function About() {
                   height={500}
                   className="w-full h-full object-cover"
                   style={{ objectPosition: 'center 5%' }}
+                  priority
                 />
               </div>
               <div

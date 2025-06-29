@@ -5,7 +5,7 @@ import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Loader from "./components/loader"
 import Navbar from "./components/navbar"
-import Hero from "./components/hero"
+import Home from "./components/hero"
 import About from "./components/about"
 import Education from "./components/education"
 import Skills from "./components/skills"
@@ -50,7 +50,7 @@ export default function Portfolio() {
       <EasterEggTrigger />
       <Navbar />
       <main>
-        <Hero />
+        <Home />
         <About />
         <Education />
         <Skills />

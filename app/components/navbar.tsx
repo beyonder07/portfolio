@@ -27,7 +27,7 @@ export default function Navbar() {
   }, [])
 
   const navItems = [
-    { name: "Home", href: "#hero" },
+    { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
     { name: "Education", href: "#education" },
     { name: "Skills", href: "#skills" },
@@ -63,6 +63,7 @@ export default function Navbar() {
                 height={40}
                 className="object-cover w-full h-full"
                 style={{ objectPosition: 'center 15%' }}
+                priority
               />
             </div>
             <div

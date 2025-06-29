@@ -4,11 +4,11 @@ import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import { ChevronDown, Github, Linkedin, Mail, Instagram } from "lucide-react"
 
-export default function Hero() {
-  const heroRef = useRef<HTMLDivElement>(null)
+export default function Home() {
+  const homeRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const tl = gsap.timeline({ delay: 3.5 })
+    const tl = gsap.timeline()
 
     // Main title animation
     tl.fromTo(".hero-title", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" })
@@ -49,7 +49,7 @@ export default function Hero() {
   }, [])
 
   return (
-    <section ref={heroRef} id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section ref={homeRef} id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
 

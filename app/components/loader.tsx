@@ -50,6 +50,7 @@ export default function Loader() {
               height={96}
               className="object-cover w-full h-full"
               style={{ objectPosition: "center 15%" }}
+              priority
             />
           </div>
           <div className="loader-ring absolute inset-0 rounded-full border-2 border-purple-500"></div>
