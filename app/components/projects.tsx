@@ -36,7 +36,7 @@ export default function Projects() {
       technologies: ["MERN Stack", "JWT", "Encryption", "AI/ML"],
       image: "/wizpro.png",
       github: "https://github.com/beyonder07/WizPro",
-      live: "https://wizpro.pages.dev/",
+      live: "https://wiz-pro-g5pc.vercel.app/",
     },
     {
       title: "XenoCRM – Customer Relationship Management",
