@@ -3,13 +3,14 @@
 import { useEffect } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { Monitor, Database, Cpu, Cloud, BookOpen } from "lucide-react"
 
 export default function Skills() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
 
     gsap.fromTo(
-      ".skill-item",
+      ".skill-card",
       { opacity: 0, y: 30 },
       {
         opacity: 1,
@@ -26,109 +27,68 @@ export default function Skills() {
     )
   }, [])
 
-  const proficiencies = [
-    { name: "Next.js / React.js", level: 92 },
-    { name: "Python / AI / ML", level: 88 },
-    { name: "Node.js / Express.js", level: 86 },
-    { name: "PostgreSQL / Supabase", level: 85 },
-    { name: "Generative AI / LLM APIs", level: 90 },
-    { name: "Cloud Engineering (OCI / Vercel)", level: 80 },
+  const categories = [
+    {
+      title: "Frontend Development",
+      icon: <Monitor className="text-blue-500 w-6 h-6" />,
+      items: ["Next.js", "React.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    },
+    {
+      title: "Backend & Databases",
+      icon: <Database className="text-purple-500 w-6 h-6" />,
+      items: ["Node.js", "Express.js", "PostgreSQL", "Supabase", "REST APIs", "SQLite"],
+    },
+    {
+      title: "AI & Machine Learning",
+      icon: <Cpu className="text-teal-500 w-6 h-6" />,
+      items: ["Python", "OpenCV", "YOLOv4-Tiny", "Scikit-learn", "Generative AI", "LLM APIs", "Prompt Engineering"],
+    },
+    {
+      title: "Cloud & Developer Tools",
+      icon: <Cloud className="text-pink-500 w-6 h-6" />,
+      items: ["Git", "GitHub", "OCI", "Vercel", "Postman", "Streamlit"],
+    },
+    {
+      title: "Core Computer Science",
+      icon: <BookOpen className="text-yellow-500 w-6 h-6" />,
+      items: ["DSA", "DBMS", "Operating Systems", "Computer Networks"],
+    },
   ]
 
-  const categories = {
-    "Frontend Development": [
-      "Next.js",
-      "React.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Framer Motion"
-    ],
-    "Backend & Databases": [
-      "Node.js",
-      "Express.js",
-      "PostgreSQL",
-      "Supabase",
-      "REST APIs",
-      "SQLite"
-    ],
-    "AI / Machine Learning": [
-      "Python",
-      "OpenCV",
-      "YOLOv4-Tiny",
-      "Scikit-learn",
-      "Generative AI",
-      "LLM APIs",
-      "Prompt Engineering"
-    ],
-    "Cloud & Developer Tools": [
-      "Git",
-      "GitHub",
-      "OCI",
-      "Vercel",
-      "Postman",
-      "Streamlit"
-    ],
-    "Core Computer Science": [
-      "DBMS",
-      "Operating Systems",
-      "Computer Networks",
-      "DSA"
-    ]
-  }
-
   return (
-    <section id="skills" className="skills-section py-20">
+    <section id="skills" className="skills-section py-20 bg-gray-900/30">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="skill-item text-4xl lg:text-5xl font-light text-white mb-6">Skills & Expertise</h2>
-          <p className="skill-item text-lg text-gray-400 max-w-2xl mx-auto">
-            A comprehensive overview of my technical proficiencies and engineering tools
+          <h2 className="skill-card text-4xl lg:text-5xl font-light text-white mb-6">Skills & Expertise</h2>
+          <p className="skill-card text-lg text-gray-400 max-w-2xl mx-auto">
+            A structured breakdown of my technical capabilities, engineering tools, and core computer science fundamentals.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Skills with progress bars */}
-          <div>
-            <h3 className="skill-item text-2xl font-light text-white mb-8">Engineering Core</h3>
-            <div className="space-y-6">
-              {proficiencies.map((skill, index) => (
-                <div key={index} className="skill-item">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-gray-300">{skill.name}</span>
-                    <span className="text-gray-400 text-sm">{skill.level}%</span>
-                  </div>
-                  <div className="w-full bg-gray-800 rounded-full h-2">
-                    <div
-                      className="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full transition-all duration-1000"
-                      style={{ width: `${skill.level}%` }}
-                    ></div>
-                  </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {categories.map((cat, idx) => (
+            <div
+              key={idx}
+              className="skill-card bg-gray-800/40 backdrop-blur-sm border border-gray-700/80 rounded-xl p-6 hover:border-gray-600 transition-all duration-300 flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  {cat.icon}
+                  <h3 className="text-xl font-medium text-white">{cat.title}</h3>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Grouped Technologies */}
-          <div>
-            <h3 className="skill-item text-2xl font-light text-white mb-8">Technologies & Frameworks</h3>
-            <div className="space-y-6">
-              {Object.entries(categories).map(([category, items], idx) => (
-                <div key={idx} className="skill-item bg-gray-800/20 backdrop-blur-sm border border-gray-800/80 rounded-xl p-4">
-                  <h4 className="text-xs font-semibold text-blue-400 uppercase tracking-widest mb-3">{category}</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {items.map((tool, index) => (
-                      <span
-                        key={index}
-                        className="px-3 py-1.5 bg-gray-800 text-gray-300 rounded-full text-xs hover:bg-gray-700 transition-colors duration-300 border border-gray-700/50"
-                      >
-                        {tool}
-                      </span>
-                    ))}
-                  </div>
+                <div className="flex flex-wrap gap-2.5">
+                  {cat.items.map((tool, toolIdx) => (
+                    <span
+                      key={toolIdx}
+                      className="px-3.5 py-1.5 bg-gray-900/60 text-gray-300 rounded-full text-xs hover:bg-gray-800 hover:text-white transition-colors duration-300 border border-gray-700/50"
+                    >
+                      {tool}
+                    </span>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

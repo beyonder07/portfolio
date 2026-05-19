@@ -17,7 +17,7 @@ export default function Projects() {
         opacity: 1,
         y: 0,
         duration: 1,
-        stagger: 0.2,
+        stagger: 0.1,
         ease: "power2.out",
         scrollTrigger: {
           trigger: ".projects-section",
@@ -60,7 +60,7 @@ export default function Projects() {
       ],
       technologies: ["Python", "Streamlit", "Groq API", "SQLite", "PyMuPDF"],
       image: "/wizpro.png",
-      github: "https://github.com/beyonder07/WizPro",
+      github: "https://github.com/beyonder07/ai-resume-screener",
       live: "https://ai-resume-screener-zpujdq2kg5mfmjj5nae3yx.streamlit.app/",
     },
     {
@@ -79,6 +79,57 @@ export default function Projects() {
       image: "/intbot.png",
       github: "https://github.com/beyonder07/Objectdetection",
       live: "#",
+    },
+    {
+      title: "WizPro – AI-Powered Code Reviewer",
+      tagline: "Intelligent AI-driven code analysis and quality verification.",
+      description:
+        "An intelligent code review system that uses AI to analyze code quality, suggest improvements, and maintain coding standards. Features JWT authentication and encryption for secure code handling.",
+      features: [
+        "AI code quality analysis",
+        "Detailed review suggestion generation",
+        "Secure JWT authentication",
+        "Encrypted code transmissions",
+        "MERN full stack dashboard",
+      ],
+      technologies: ["MERN Stack", "JWT", "Encryption", "AI/ML"],
+      image: "/wizpro.png",
+      github: "https://github.com/beyonder07/WizPro",
+      live: "https://wiz-pro-g5pc.vercel.app/",
+    },
+    {
+      title: "XenoCRM – Customer Relationship Manager",
+      tagline: "Comprehensive analytics and CRM platform.",
+      description:
+        "A comprehensive CRM system with role-based authentication, customer management, and analytics dashboard. Built with modern web technologies and deployed on cloud platforms.",
+      features: [
+        "Role-based access controls",
+        "Customer pipeline management",
+        "Operational analytics dashboard",
+        "Cloud hosting with Render",
+        "Cloudflare security layers",
+      ],
+      technologies: ["MERN Stack", "Role-based Auth", "Render", "Cloudflare"],
+      image: "/crm.png",
+      github: "https://github.com/beyonder07/XenoCrm",
+      live: "https://xenocrm.pages.dev",
+    },
+    {
+      title: "Intbot Symposium Website",
+      tagline: "Official SRM Institute symposium management platform.",
+      description:
+        "Official website for the Intbot Symposium event at SRM Institute. Features event information, registration system, and responsive design with modern UI/UX.",
+      features: [
+        "Event information management",
+        "Symposium registration system",
+        "REST APIs for real-time signups",
+        "Responsive fluid UI layouts",
+        "Secure attendee data storage",
+      ],
+      technologies: ["React", "Node.js", "Express", "REST APIs"],
+      image: "/intbot.png",
+      github: "#",
+      live: "https://srmintbot.in",
     },
   ]
 
