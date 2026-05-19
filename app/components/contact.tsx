@@ -1,12 +1,27 @@
 "use client"
 
 import type React from "react"
-
 import { useEffect, useState } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { Mail, MessageSquare, Send, Github, Linkedin, Phone, MapPin, Instagram } from "lucide-react"
+import { Mail, Send, Github, Linkedin, Phone, MapPin, Instagram, Code } from "lucide-react"
 import { toast } from "sonner"
+
+// Custom LeetCode Icon
+function LeetCodeIcon({ className = "w-6 h-6" }: { className?: string }) {
+  return (
+    <svg
+      role="img"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <title>LeetCode</title>
+      <path d="M13.483 0a1.374 1.374 0 0 0-.961.414l-9.877 9.88a1.375 1.375 0 0 0 0 1.956l.002.002 6.85 6.907a1.375 1.375 0 0 0 1.95-.008l9.877-9.883a1.375 1.375 0 0 0 0-1.957l-6.85-6.904a1.377 1.377 0 0 0-.99-.408Zm.03 2.112 5.8 5.848-8.91 8.916-5.8-5.845 8.91-8.919ZM5.767 11.233a.687.687 0 0 1 .486.202l4.896 4.93a.687.687 0 0 1-.486 1.171.687.687 0 0 1-.486-.202l-4.896-4.93a.687.687 0 0 1 .486-1.171Zm-1.897 1.916a.687.687 0 0 1 .486.202l3.413 3.438a.687.687 0 0 1-.486 1.171.687.687 0 0 1-.486-.202L3.87 13.351a.687.687 0 0 1 .486-1.171Z" />
+    </svg>
+  )
+}
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -87,7 +102,7 @@ export default function Contact() {
       console.error("Form submission error:", error)
       if (error instanceof TypeError && error.message.includes('fetch')) {
         toast.error("Network error. Please check your connection and try again.")
-      } else if (error.name === 'AbortError') {
+      } else if (error instanceof Error && error.name === 'AbortError') {
         toast.error("Request timed out. Please try again.")
       } else {
         toast.error("An error occurred. Please try again later.")
@@ -103,7 +118,7 @@ export default function Contact() {
         <div className="text-center mb-16">
           <h2 className="contact-element text-4xl lg:text-5xl font-light text-white mb-6">Get In Touch</h2>
           <p className="contact-element text-lg text-gray-400 max-w-2xl mx-auto">
-            Have a project in mind? Let's work together to bring your ideas to life.
+            Let's discuss how we can build high-performance scalable systems and AI-powered solutions together.
           </p>
         </div>
 
@@ -144,7 +159,7 @@ export default function Contact() {
                   value={formData.subject}
                   onChange={(e) => handleInputChange("subject", e.target.value)}
                   className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors"
-                  placeholder="Project discussion"
+                  placeholder="Project or opportunity discussion"
                 />
               </div>
 
@@ -156,7 +171,7 @@ export default function Contact() {
                   value={formData.message}
                   onChange={(e) => handleInputChange("message", e.target.value)}
                   className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors resize-none"
-                  placeholder="Tell me about your project..."
+                  placeholder="Tell me about your product requirements..."
                 />
               </div>
 
@@ -175,9 +190,9 @@ export default function Contact() {
           <div className="contact-element space-y-8">
             <div>
               <h3 className="text-2xl font-light text-white mb-6">Let's Connect</h3>
-              <p className="text-gray-400 mb-8">
-                I'm always interested in new opportunities and exciting projects. Whether you have a question or just
-                want to say hi, feel free to reach out!
+              <p className="text-gray-400 mb-8 leading-relaxed">
+                I am currently <strong className="text-blue-400 font-medium">Open to Full Stack, AI/ML, and Product Engineering opportunities</strong>. 
+                Whether you have a team to scale or an intelligent product to build, feel free to reach out!
               </p>
 
               <div className="space-y-4">
@@ -204,13 +219,16 @@ export default function Contact() {
             <div>
               <h4 className="text-lg font-medium text-white mb-4">Follow Me</h4>
               <div className="flex space-x-4">
-                <a href="https://github.com/beyonder07" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">
+                <a href="https://github.com/beyonder07" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300" title="GitHub">
                   <Github size={24} />
                 </a>
-                <a href="https://www.linkedin.com/in/rajul-mishra-621548258" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">
+                <a href="https://www.linkedin.com/in/rajul-mishra-621548258" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300" title="LinkedIn">
                   <Linkedin size={24} />
                 </a>
-                <a href="https://www.instagram.com/13_rajul/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">
+                <a href="https://leetcode.com/u/beyonder07/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300" title="LeetCode">
+                  <LeetCodeIcon className="w-6 h-6" />
+                </a>
+                <a href="https://www.instagram.com/13_rajul/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300" title="Instagram">
                   <Instagram size={24} />
                 </a>
               </div>

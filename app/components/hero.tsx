@@ -1,11 +1,21 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { gsap } from "gsap"
 import { ChevronDown, Github, Linkedin, Mail, Instagram } from "lucide-react"
 
 export default function Home() {
   const homeRef = useRef<HTMLDivElement>(null)
+  const [currentKeyword, setCurrentKeyword] = useState("")
+
+  const keywords = [
+    "AI-Powered Applications",
+    "Scalable SaaS Platforms",
+    "Intelligent Automation",
+    "Full Stack Systems",
+    "Progressive Web Apps",
+    "Generative AI Workflows"
+  ]
 
   useEffect(() => {
     const tl = gsap.timeline()
@@ -31,6 +41,25 @@ export default function Home() {
       ease: "power2.inOut",
     })
 
+    // Rotating keywords animation
+    let index = 0
+    setCurrentKeyword(keywords[0])
+    const interval = setInterval(() => {
+      index = (index + 1) % keywords.length
+      gsap.to(".rotating-keyword", {
+        opacity: 0,
+        y: -10,
+        duration: 0.3,
+        onComplete: () => {
+          setCurrentKeyword(keywords[index])
+          gsap.fromTo(".rotating-keyword", 
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.3 }
+          )
+        }
+      })
+    }, 3000)
+
     // Mouse parallax effect
     const handleMouseMove = (e: MouseEvent) => {
       const x = (e.clientX / window.innerWidth - 0.5) * 20
@@ -45,7 +74,10 @@ export default function Home() {
     }
 
     window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove)
+      clearInterval(interval)
+    }
   }, [])
 
   return (
@@ -66,34 +98,45 @@ export default function Home() {
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light text-white mb-4">
             Hi, I'm{" "}
             <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent font-medium">
-              Rajul
+              Rajul Mishra
             </span>
           </h1>
         </div>
 
         <div className="hero-subtitle mb-8">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-gray-300">Full Stack Developer</h2>
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-light text-gray-300 leading-snug">
+            Full Stack Developer • AI Engineer • Building Scalable Intelligent Products
+          </h2>
+          <div className="h-10 mt-4 text-lg sm:text-xl font-light text-blue-400">
+            Specializing in <span className="rotating-keyword inline-block font-medium">{currentKeyword}</span>
+          </div>
         </div>
 
         <div className="hero-description mb-12">
           <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Full Stack Developer with strong JavaScript, Python, and Java skills. Experienced in building web applications using the MERN stack. Proficient in RESTful API development, database management, and cloud platforms.
+            B.Tech CSE student and developer focused on building production-ready full stack applications, AI-powered systems, and scalable digital experiences using Next.js, TypeScript, Python, PostgreSQL, and Generative AI.
           </p>
         </div>
 
         {/* CTA Buttons */}
-        <div className="hero-cta flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+        <div className="hero-cta flex flex-wrap gap-4 justify-center items-center mb-16">
           <button
             onClick={() => document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" })}
             className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-full hover:scale-105 transition-all duration-300"
           >
-            View My Work
+            View Projects
+          </button>
+          <button
+            onClick={() => document.querySelector("#resume")?.scrollIntoView({ behavior: "smooth" })}
+            className="px-8 py-3 border border-gray-600 text-gray-300 font-medium rounded-full hover:border-gray-400 hover:text-white transition-all duration-300 hover:scale-105"
+          >
+            Resume
           </button>
           <button
             onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
-            className="px-8 py-3 border border-gray-600 text-gray-300 font-medium rounded-full hover:border-gray-400 hover:text-white transition-all duration-300"
+            className="px-8 py-3 border border-gray-600 text-gray-300 font-medium rounded-full hover:border-gray-400 hover:text-white transition-all duration-300 hover:scale-105"
           >
-            Get In Touch
+            Contact
           </button>
         </div>
 

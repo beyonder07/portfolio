@@ -36,30 +36,50 @@ export default function About() {
 
             <div className="space-y-6">
               <p className="about-content text-lg text-gray-300 leading-relaxed">
-                I'm a passionate Full Stack Developer currently pursuing B.Tech in Computer Science and Engineering at SRM Institute of Science and Technology with a strong academic record of 9.2/10 CGPA.
+                I enjoy building products that combine clean user experiences with strong backend systems and intelligent automation. My work spans full stack development, AI-powered workflows, computer vision, and scalable Progressive Web Applications.
               </p>
 
               <p className="about-content text-lg text-gray-300 leading-relaxed">
-                I specialize in building web applications using the MERN stack, with expertise in JavaScript, Python, and Java. I'm experienced in RESTful API development, database management, and cloud platforms like AWS and GCP.
+                I’m particularly interested in building systems that solve real operational problems while maintaining high-performance user experiences and scalable architectures.
               </p>
 
               <p className="about-content text-lg text-gray-300 leading-relaxed">
-                I've successfully completed internships at Extended Leafs Inc and Shamgar Software Solutions, where I improved API response times by 25% and enhanced model efficiency by 20%. I'm passionate about creating scalable solutions and collaborating in cross-functional teams.
+                Currently, I’m working as a ServiceNow Intern at Deloitte, where I contribute to enterprise workflow automation and backend operational systems.
               </p>
             </div>
 
+            {/* Highlights List */}
+            <div className="about-content mt-8 space-y-2">
+              <div className="flex items-center gap-2 text-gray-300">
+                <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                <span>B.Tech in Computer Science & Engineering (IoT) at SRM IST</span>
+              </div>
+              <div className="flex items-center gap-2 text-gray-300">
+                <span className="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
+                <span>IEEE Research Publication in Edge AI & Speech Recognition</span>
+              </div>
+              <div className="flex items-center gap-2 text-gray-300">
+                <span className="w-1.5 h-1.5 bg-pink-500 rounded-full"></span>
+                <span>Multiple Hackathon Winner & National Semi-Finalist</span>
+              </div>
+              <div className="flex items-center gap-2 text-gray-300">
+                <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                <span>Experience across AI, Full Stack Development, and Workflow Automation</span>
+              </div>
+            </div>
+
             {/* Stats */}
-            <div className="about-content grid grid-cols-3 gap-8 mt-12">
+            <div className="about-content grid grid-cols-3 gap-8 mt-10">
               <div className="text-center">
-                <div className="text-3xl font-light text-white mb-2">9.2</div>
+                <div className="text-3xl font-light text-white mb-2 font-medium">9.31</div>
                 <div className="text-sm text-gray-400">CGPA</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-light text-white mb-2">3+</div>
-                <div className="text-sm text-gray-400">Projects</div>
+                <div className="text-3xl font-light text-white mb-2 font-medium">IEEE</div>
+                <div className="text-sm text-gray-400">Research Pub</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-light text-white mb-2">2</div>
+                <div className="text-3xl font-light text-white mb-2 font-medium">3</div>
                 <div className="text-sm text-gray-400">Internships</div>
               </div>
             </div>

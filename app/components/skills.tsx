@@ -26,55 +26,72 @@ export default function Skills() {
     )
   }, [])
 
-  const skills = [
-    { name: "JavaScript", level: 90 },
-    { name: "Python", level: 85 },
-    { name: "Java", level: 80 },
-    { name: "React.js", level: 88 },
-    { name: "Node.js", level: 85 },
-    { name: "MongoDB", level: 82 },
-    { name: "MySQL", level: 78 },
-    { name: "AWS", level: 75 },
+  const proficiencies = [
+    { name: "Next.js / React.js", level: 92 },
+    { name: "Python / AI / ML", level: 88 },
+    { name: "Node.js / Express.js", level: 86 },
+    { name: "PostgreSQL / Supabase", level: 85 },
+    { name: "Generative AI / LLM APIs", level: 90 },
+    { name: "Cloud Engineering (OCI / Vercel)", level: 80 },
   ]
 
-  const tools = [
-    "JavaScript",
-    "TypeScript",
-    "Python",
-    "Java",
-    "React.js",
-    "Next.js",
-    "TailwindCSS",
-    "HTML",
-    "CSS",
-    "Node.js",
-    "Express.js",
-    "Spring Boot",
-    "REST APIs",
-    "MongoDB",
-    "MySQL",
-    "Git",
-    "Postman",
-    "AWS",
-    "GCP",
-  ]
+  const categories = {
+    "Frontend Development": [
+      "Next.js",
+      "React.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion"
+    ],
+    "Backend & Databases": [
+      "Node.js",
+      "Express.js",
+      "PostgreSQL",
+      "Supabase",
+      "REST APIs",
+      "SQLite"
+    ],
+    "AI / Machine Learning": [
+      "Python",
+      "OpenCV",
+      "YOLOv4-Tiny",
+      "Scikit-learn",
+      "Generative AI",
+      "LLM APIs",
+      "Prompt Engineering"
+    ],
+    "Cloud & Developer Tools": [
+      "Git",
+      "GitHub",
+      "OCI",
+      "Vercel",
+      "Postman",
+      "Streamlit"
+    ],
+    "Core Computer Science": [
+      "DBMS",
+      "Operating Systems",
+      "Computer Networks",
+      "DSA"
+    ]
+  }
 
   return (
     <section id="skills" className="skills-section py-20">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="skill-item text-4xl lg:text-5xl font-light text-white mb-6">Skills & Technologies</h2>
+          <h2 className="skill-item text-4xl lg:text-5xl font-light text-white mb-6">Skills & Expertise</h2>
           <p className="skill-item text-lg text-gray-400 max-w-2xl mx-auto">
-            I work with a variety of technologies to bring ideas to life
+            A comprehensive overview of my technical proficiencies and engineering tools
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Skills with progress bars */}
           <div>
-            <h3 className="skill-item text-2xl font-light text-white mb-8">Proficiency</h3>
+            <h3 className="skill-item text-2xl font-light text-white mb-8">Engineering Core</h3>
             <div className="space-y-6">
-              {skills.map((skill, index) => (
+              {proficiencies.map((skill, index) => (
                 <div key={index} className="skill-item">
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-gray-300">{skill.name}</span>
@@ -91,17 +108,24 @@ export default function Skills() {
             </div>
           </div>
 
-          {/* Technologies */}
+          {/* Grouped Technologies */}
           <div>
-            <h3 className="skill-item text-2xl font-light text-white mb-8">Technologies</h3>
-            <div className="flex flex-wrap gap-3">
-              {tools.map((tool, index) => (
-                <span
-                  key={index}
-                  className="skill-item px-4 py-2 bg-gray-800 text-gray-300 rounded-full text-sm hover:bg-gray-700 transition-colors duration-300"
-                >
-                  {tool}
-                </span>
+            <h3 className="skill-item text-2xl font-light text-white mb-8">Technologies & Frameworks</h3>
+            <div className="space-y-6">
+              {Object.entries(categories).map(([category, items], idx) => (
+                <div key={idx} className="skill-item bg-gray-800/20 backdrop-blur-sm border border-gray-800/80 rounded-xl p-4">
+                  <h4 className="text-xs font-semibold text-blue-400 uppercase tracking-widest mb-3">{category}</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {items.map((tool, index) => (
+                      <span
+                        key={index}
+                        className="px-3 py-1.5 bg-gray-800 text-gray-300 rounded-full text-xs hover:bg-gray-700 transition-colors duration-300 border border-gray-700/50"
+                      >
+                        {tool}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           </div>

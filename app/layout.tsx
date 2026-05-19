@@ -22,12 +22,16 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const title = "Rajul Mishra | Full Stack Developer & AI Engineer"
+  const description = "Portfolio of Rajul Mishra — Full Stack Developer and AI Engineer building scalable SaaS applications, AI-powered systems, and modern web experiences using Next.js, TypeScript, Python, PostgreSQL, and Generative AI."
+  const keywords = "Full Stack Developer, AI Engineer, Next.js Developer, MERN Stack, PostgreSQL, Generative AI, SaaS Developer, React Developer, Python Developer"
+
   return (
     <html lang="en" className={`${inter.variable} ${cinzel.variable}`}>
       <head>
-        <title>Rajul Mishra - Full Stack Developer</title>
-        <meta name="description" content="Full Stack Developer with strong JavaScript, Python, and Java skills. Experienced in building web applications using the MERN stack." />
-        <meta name="keywords" content="Full Stack Developer, React, Node.js, Python, Java, MERN Stack, Web Development" />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="keywords" content={keywords} />
         <meta name="author" content="Rajul Mishra" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -38,14 +42,14 @@ export default function RootLayout({
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://rajul-mishra.vercel.app/" />
-        <meta property="og:title" content="Rajul Mishra - Full Stack Developer" />
-        <meta property="og:description" content="Full Stack Developer with strong JavaScript, Python, and Java skills. Experienced in building web applications using the MERN stack." />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://rajul-mishra.vercel.app/" />
-        <meta property="twitter:title" content="Rajul Mishra - Full Stack Developer" />
-        <meta property="twitter:description" content="Full Stack Developer with strong JavaScript, Python, and Java skills. Experienced in building web applications using the MERN stack." />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
       </head>
       <body>{children}</body>
     </html>
@@ -53,9 +57,9 @@ export default function RootLayout({
 }
 
 export const metadata = {
-  title: "Rajul Mishra - Full Stack Developer",
-  description: "Full Stack Developer with strong JavaScript, Python, and Java skills. Experienced in building web applications using the MERN stack.",
-  keywords: ["Full Stack Developer", "React", "Node.js", "Python", "Java", "MERN Stack", "Web Development"],
+  title: "Rajul Mishra | Full Stack Developer & AI Engineer",
+  description: "Portfolio of Rajul Mishra — Full Stack Developer and AI Engineer building scalable SaaS applications, AI-powered systems, and modern web experiences using Next.js, TypeScript, Python, PostgreSQL, and Generative AI.",
+  keywords: ["Full Stack Developer", "AI Engineer", "Next.js Developer", "MERN Stack", "PostgreSQL", "Generative AI", "SaaS Developer", "React Developer", "Python Developer"],
   author: "Rajul Mishra",
   generator: 'Next.js'
 };

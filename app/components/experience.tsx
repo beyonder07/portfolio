@@ -28,28 +28,47 @@ export default function Experience() {
 
   const experiences = [
     {
-      year: "Jan 2025 - Apr 2025",
-      title: "ML Intern",
-      company: "Shamgar Software Solutions",
-      description:
-        "Developed Python scripts for feature extraction and improved model efficiency by 20%. Built POCs for scalable ML integrations and collaborated with the development team.",
+      year: "Jan 2026 – Present",
+      title: "ServiceNow Intern",
+      company: "Deloitte",
+      bullets: [
+        "Designing and optimizing ServiceNow workflows for enterprise-scale automation systems.",
+        "Automating backend operational processes to improve workflow efficiency and reliability.",
+        "Collaborating with cross-functional teams to streamline issue resolution and system operations.",
+        "Handling enterprise-scale process automation and workflow logic implementation."
+      ]
     },
     {
-      year: "Jan 2025 - Feb 2025",
+      year: "Feb 2025 – May 2025",
+      title: "Machine Learning Intern",
+      company: "Shamgar Software Solution",
+      bullets: [
+        "Processed and structured complex datasets for machine learning model development pipelines.",
+        "Assisted in data preprocessing, feature engineering, and analytical workflow optimization.",
+        "Built Python-based ML operations scripts and validated data inputs for model efficiency.",
+        "Contributed to local proof-of-concept AI and ML integration tests."
+      ]
+    },
+    {
+      year: "Jan 2025 – Feb 2025",
       title: "Full Stack Development Intern",
       company: "Extended Leafs Inc",
-      description:
-        "Built full-stack modules using React and Node.js. Reduced API response time by 25% and collaborated in Agile sprints with designers and product managers.",
-    },
+      bullets: [
+        "Developed scalable backend APIs and frontend modules for AI-integrated applications.",
+        "Built responsive full-stack components using React.js, Node.js, and REST architecture.",
+        "Contributed to frontend loading optimization and backend feature integrations.",
+        "Worked within Agile development sprint models alongside designers and project managers."
+      ]
+    }
   ]
 
   return (
     <section id="experience" className="experience-section py-20">
       <div className="max-w-4xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="timeline-item text-4xl lg:text-5xl font-light text-white mb-6">Experience</h2>
+          <h2 className="timeline-item text-4xl lg:text-5xl font-light text-white mb-6">Professional Experience</h2>
           <p className="timeline-item text-lg text-gray-400 max-w-2xl mx-auto">
-            My professional journey and internship experiences
+            My professional journey, internships, and engineering contributions
           </p>
         </div>
 
@@ -73,9 +92,13 @@ export default function Experience() {
                         <h3 className="text-xl font-medium text-white mb-1">{exp.title}</h3>
                         <p className="text-blue-400 font-medium">{exp.company}</p>
                       </div>
-                      <div className="text-gray-400 text-sm mt-2 md:mt-0">{exp.year}</div>
+                      <div className="text-gray-400 text-sm mt-2 md:mt-0 font-medium">{exp.year}</div>
                     </div>
-                    <p className="text-gray-300 leading-relaxed">{exp.description}</p>
+                    <ul className="text-gray-300 text-sm space-y-2 list-disc list-inside leading-relaxed">
+                      {exp.bullets.map((bullet, bulletIdx) => (
+                        <li key={bulletIdx} className="pl-1 -indent-5 ml-5">{bullet}</li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
