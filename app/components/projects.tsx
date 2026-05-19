@@ -42,7 +42,7 @@ export default function Projects() {
         "Mobile-first PWA architecture",
       ],
       technologies: ["Next.js", "TypeScript", "PostgreSQL", "Supabase", "Tailwind CSS"],
-      image: "/crm.png",
+      image: "/powerhouse.png",
       github: "https://github.com/beyonder07/pwapowerhouse",
       live: "https://pwapowerhouse.vercel.app/",
     },
@@ -59,7 +59,7 @@ export default function Projects() {
         "Automated ranking workflows",
       ],
       technologies: ["Python", "Streamlit", "Groq API", "SQLite", "PyMuPDF"],
-      image: "/wizpro.png",
+      image: "/talentlens.png",
       github: "https://github.com/beyonder07/ai-resume-screener",
       live: "https://ai-resume-screener-zpujdq2kg5mfmjj5nae3yx.streamlit.app/",
     },
@@ -76,7 +76,7 @@ export default function Projects() {
         "Optimized low-latency performance",
       ],
       technologies: ["Python", "OpenCV", "YOLOv4-Tiny"],
-      image: "/intbot.png",
+      image: "/object_detection.jpg",
       github: "https://github.com/beyonder07/Objectdetection",
       live: "#",
     },
@@ -143,75 +143,77 @@ export default function Projects() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="project-card group bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl overflow-hidden hover:border-gray-600 transition-all duration-300 flex flex-col justify-between"
+              className="project-card group bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl overflow-hidden hover:border-gray-600 transition-all duration-300 flex flex-col justify-between lg:aspect-square"
             >
-              <div>
-                {/* Project image */}
-                <div className="aspect-video bg-gradient-to-br from-blue-500/20 to-purple-600/20 flex items-center justify-center overflow-hidden relative">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    width={1920}
-                    height={1080}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
+              {/* Project image */}
+              <div className="h-48 lg:h-[42%] bg-gradient-to-br from-blue-500/20 to-purple-600/20 flex items-center justify-center overflow-hidden relative flex-shrink-0">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={1024}
+                  height={688}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
 
-                {/* Project content */}
-                <div className="p-6">
-                  <h3 className="text-xl font-medium text-white mb-1">{project.title}</h3>
-                  <p className="text-xs text-blue-400 italic mb-4">{project.tagline}</p>
-                  <p className="text-gray-400 text-sm mb-4 leading-relaxed">{project.description}</p>
+              {/* Project content */}
+              <div className="p-6 flex-1 flex flex-col justify-between overflow-y-auto lg:h-[58%]">
+                <div>
+                  <h3 className="text-xl lg:text-2xl font-medium text-white mb-1 leading-tight">{project.title}</h3>
+                  <p className="text-xs text-blue-400 italic mb-3">{project.tagline}</p>
+                  <p className="text-gray-400 text-xs lg:text-sm mb-4 leading-relaxed">{project.description}</p>
 
                   {/* Key Features */}
                   <div className="mb-4">
-                    <h4 className="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Key Features</h4>
+                    <h4 className="text-[10px] lg:text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Key Features</h4>
                     <ul className="text-xs text-gray-400 space-y-1 list-disc list-inside">
-                      {project.features.map((feat, fIdx) => (
+                      {project.features.slice(0, 4).map((feat, fIdx) => (
                         <li key={fIdx} className="leading-relaxed">{feat}</li>
                       ))}
                     </ul>
                   </div>
+                </div>
 
+                <div>
                   {/* Technologies */}
-                  <div className="flex flex-wrap gap-1.5 mb-2">
+                  <div className="flex flex-wrap gap-1.5 mb-4">
                     {project.technologies.map((tech, techIndex) => (
-                      <span key={techIndex} className="px-2.5 py-0.5 bg-gray-700/60 text-gray-300 text-xs rounded-full border border-gray-600/35">
+                      <span key={techIndex} className="px-2.5 py-0.5 bg-gray-700/60 text-gray-300 text-[10px] lg:text-xs rounded-full border border-gray-600/35">
                         {tech}
                       </span>
                     ))}
                   </div>
-                </div>
-              </div>
 
-              {/* Links */}
-              <div className="p-6 pt-0 mt-auto border-t border-gray-700/50 flex space-x-4">
-                {project.github && project.github !== "#" && (
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-300 pt-4"
-                  >
-                    <Github size={18} />
-                    <span className="text-sm">Code</span>
-                  </a>
-                )}
-                {project.live && project.live !== "#" && (
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-300 pt-4"
-                  >
-                    <ExternalLink size={18} />
-                    <span className="text-sm">Live Demo</span>
-                  </a>
-                )}
+                  {/* Links */}
+                  <div className="pt-4 border-t border-gray-700/50 flex space-x-6">
+                    {project.github && project.github !== "#" && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-300"
+                      >
+                        <Github size={18} />
+                        <span className="text-sm font-medium">Code</span>
+                      </a>
+                    )}
+                    {project.live && project.live !== "#" && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-300"
+                      >
+                        <ExternalLink size={18} />
+                        <span className="text-sm font-medium">Live Demo</span>
+                      </a>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
           ))}

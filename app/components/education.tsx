@@ -104,13 +104,14 @@ export default function Education() {
     <section id="education" className="education-section py-20 bg-gray-900/50">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="education-item text-4xl lg:text-5xl font-light text-white mb-6">Education & Research</h2>
+          <h2 className="education-item text-4xl lg:text-5xl font-light text-white mb-6">Education & Credentials</h2>
           <p className="education-item text-lg text-gray-400 max-w-2xl mx-auto">
-            Academic achievements, professional certifications, and published research
+            Academic foundation, professional certifications, published research, and hackathon achievements
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        {/* Top Section: Education & Research on Left, Certifications on Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
           {/* Left Column: Education & Research */}
           <div className="space-y-12">
             <div>
@@ -161,9 +162,8 @@ export default function Education() {
             </div>
           </div>
 
-          {/* Right Column: Certifications & Achievements */}
+          {/* Right Column: Certifications */}
           <div className="space-y-12">
-            {/* Certifications */}
             <div>
               <h3 className="education-item text-2xl font-light text-white mb-8 flex items-center gap-3">
                 <Award className="text-purple-500" size={28} />
@@ -182,26 +182,39 @@ export default function Education() {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
 
-            {/* Achievements */}
-            <div>
-              <h3 className="education-item text-2xl font-light text-white mb-8 flex items-center gap-3">
-                <Award className="text-yellow-500" size={28} />
-                Achievements
-              </h3>
-              <div className="space-y-4">
-                {achievements.map((achievement, index) => (
-                  <div key={index} className="education-item bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg p-4">
-                    <div className="flex justify-between items-start mb-2">
-                      <h4 className="text-lg font-medium text-white">{achievement.title}</h4>
-                      <span className="text-sm text-gray-400">{achievement.year}</span>
-                    </div>
-                    <p className="text-green-400 text-sm mb-2 font-medium">{achievement.achievement}</p>
-                    <p className="text-gray-300 text-sm">{achievement.description}</p>
+        {/* Bottom Section: Achievements (Horizontally & Vertically Symmetric Grid) */}
+        <div className="border-t border-gray-800/80 pt-16">
+          <div className="text-center mb-12">
+            <h3 className="education-item text-3xl font-light text-white mb-4 flex items-center justify-center gap-3">
+              <Award className="text-yellow-500" size={32} />
+              Hackathons & Achievements
+            </h3>
+            <p className="education-item text-gray-400 max-w-xl mx-auto text-sm">
+              Recognition and milestones achieved in national and university level competitions
+            </p>
+          </div>
+
+          <div className="education-item flex flex-wrap justify-center gap-6">
+            {achievements.map((achievement, index) => (
+              <div
+                key={index}
+                className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-6 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col justify-between hover:border-gray-600 transition-all duration-300"
+              >
+                <div>
+                  <div className="flex justify-between items-start mb-3">
+                    <h4 className="text-lg font-medium text-white leading-snug">{achievement.title}</h4>
+                    <span className="text-xs text-gray-400 bg-gray-900/60 px-2 py-1 rounded border border-gray-800">{achievement.year}</span>
                   </div>
-                ))}
+                  <p className="text-green-400 text-xs font-semibold uppercase tracking-wider mb-3">
+                    {achievement.achievement}
+                  </p>
+                  <p className="text-gray-300 text-sm leading-relaxed">{achievement.description}</p>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

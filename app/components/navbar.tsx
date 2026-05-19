@@ -51,16 +51,16 @@ export default function Navbar() {
         scrolled ? "bg-black/80 backdrop-blur-md border-b border-gray-800" : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+      <div className="w-full px-6 lg:px-10">
+        <div className="flex justify-between items-center h-24">
           {/* Logo */}
           <div className="nav-item relative group transition-transform duration-300 ease-in-out hover:scale-110">
-            <div className="w-10 h-10 rounded-full overflow-hidden border border-gray-700">
+            <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-gray-700 shadow-lg">
               <Image
                 src="/dp1.jpg"
                 alt="Rajul Mishra"
-                width={40}
-                height={40}
+                width={56}
+                height={56}
                 className="object-cover w-full h-full"
                 style={{ objectPosition: 'center 15%' }}
                 priority
